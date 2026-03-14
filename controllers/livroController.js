@@ -1,5 +1,5 @@
 const { get } = require('http')
-const { getTodosLivros, getLivroPorId } = require('../services/livrosService')
+const { getTodosLivros, getLivroPorId, addLivro } = require('../services/livrosService')
 
 function getLivros(req, res) {
   try {
@@ -22,9 +22,11 @@ function getLivro(req, res) {
 
 function createLivro(req, res) {
   try {
-    res.send({ message: 'Vc fez uma requisição POST', body: req.body })
+    const LivroNovo = req.body
+    addLivro(LivroNovo)
+    res.status(201).send({ message: 'Livro adicionado com sucesso', body: req.body })
   } catch (error) {
-    res.status(500).send({ message: 'Erro ao processar a requisição POST' })
+    res.status(500).send({ message: 'Erro ao tentar adicionar livro' })
   }
 }
 
