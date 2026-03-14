@@ -12,8 +12,8 @@ npm init -y
 npm install express
 ```
 
-## 3. Criar o ficheiro `app.js`
-Crie o ficheiro na raiz do projeto e insira o código:
+## 3. Criar o `app.js`
+Crie na raiz do projeto:
 ```javascript
 const express = require("express")
 const app = express()
