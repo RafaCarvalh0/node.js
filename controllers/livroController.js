@@ -1,10 +1,20 @@
 const { get } = require('http')
-const { getTodosLivros } = require('../services/livrosService')
+const { getTodosLivros, getLivroPorId } = require('../services/livrosService')
 
 function getLivros(req, res) {
   try {
     const livros = getTodosLivros()
     res.send(livros)
+  } catch (error) {
+    res.status(500).send({ message: 'Erro ao processar a requisição GET' })
+  }
+}
+
+function getLivro(req, res) {
+  try {
+    const id = req.params.id
+    const livro = getLivroPorId(id)
+    res.send(livro)
   } catch (error) {
     res.status(500).send({ message: 'Erro ao processar a requisição GET' })
   }
@@ -38,6 +48,7 @@ function deleteLivro(req, res) {
 
 module.exports = {
   getLivros,
+  getLivro,
   createLivro,
   updateLivro,
   deleteLivro
