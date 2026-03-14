@@ -12,28 +12,12 @@ npm init -y
 npm install express
 ```
 
-## 3. Criar o `app.js`
-Crie na raiz do projeto:
-```javascript
-const express = require("express")
-const app = express()
-const port = 8000
-
-app.get("/", (req, res) => {
-  res.send("Hello World!")
-})
-
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`)
-})
-```
-
-## 4. Instalar o Nodemon
+## 3. Instalar o Nodemon
 ```bash
 npm install nodemon
 ```
 
-## 5. Configurar o `package.json`
+## 4. Configurar o `package.json`
 Adicione o comando de desenvolvimento dentro da tag `"scripts"`:
 ```json
 "scripts": {
@@ -41,7 +25,7 @@ Adicione o comando de desenvolvimento dentro da tag `"scripts"`:
 }
 ```
 
-## 6. Executar o projeto
+## 5. Executar o projeto
 ```bash
 npm run dev
 ```
