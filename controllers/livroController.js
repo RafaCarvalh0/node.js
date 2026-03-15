@@ -1,4 +1,3 @@
-const { get } = require('http')
 const { getTodosLivros, getLivroPorId, addLivro, atualizarLivro, deletaLivroPorId } = require('../services/livrosService')
 
 function getLivros(req, res) {
@@ -13,8 +12,16 @@ function getLivros(req, res) {
 function getLivro(req, res) {
   try {
     const id = req.params.id
-    const livro = getLivroPorId(id)
-    res.send(livro)
+    if (id && Number(id)) {
+      const livro = getLivroPorId(id)
+      if (livro) {
+        res.send(livro)
+      } else {
+        res.status(404).send({ message: 'Livro não encontrado' })
+      }
+    } else {
+      res.status(422).send({ message: 'ID inválido' })
+    }
   } catch (error) {
     res.status(500).send({ message: 'Erro ao processar a requisição GET' })
   }
@@ -22,9 +29,13 @@ function getLivro(req, res) {
 
 function createLivro(req, res) {
   try {
-    const LivroNovo = req.body
-    addLivro(LivroNovo)
-    res.status(201).send({ message: 'Livro adicionado com sucesso', body: req.body })
+    const livroNovo = req.body
+    if (livroNovo.titulo) {
+      addLivro(livroNovo)
+      res.status(201).send({ message: 'Livro adicionado com sucesso', body: req.body })
+    } else {
+      res.status(422).send({ message: 'O campo "titulo" é obrigatório' })
+    }
   } catch (error) {
     res.status(500).send({ message: 'Erro ao tentar adicionar livro' })
   }
@@ -33,16 +44,20 @@ function createLivro(req, res) {
 function patchLivro(req, res) {
   try {
     const id = req.params.id
-    const livroAtualizado = req.body
     
-    const livroAtual = getLivroPorId(id)
-    
-    if (livroAtual) {
-      atualizarLivro(id, livroAtualizado)
-      const livroModificado = getLivroPorId(id)
-      res.send({ message: 'Livro atualizado com sucesso', body: livroModificado })
+    if (id && Number(id)) {
+      const livroAtualizado = req.body
+      const livroAtual = getLivroPorId(id)
+      
+      if (livroAtual) {
+        atualizarLivro(id, livroAtualizado)
+        const livroModificado = getLivroPorId(id)
+        res.send({ message: 'Livro atualizado com sucesso', body: livroModificado })
+      } else {
+        res.status(404).send({ message: 'Livro não encontrado' })
+      }
     } else {
-      res.status(404).send({ message: 'Livro não encontrado' })
+      res.status(422).send({ message: 'ID inválido' })
     }
   } catch (error) {
     res.status(500).send({ message: 'Erro ao processar a requisição PATCH' })
@@ -52,8 +67,12 @@ function patchLivro(req, res) {
 function deleteLivro(req, res) {
   try {
     const id = req.params.id
-    deletaLivroPorId(id)
-    res.send({ message: 'Livro deletado com sucesso' })
+    if (id && Number(id)) {
+      deletaLivroPorId(id)
+      res.send({ message: 'Livro deletado com sucesso' })
+    } else {
+      res.status(422).send({ message: 'ID inválido' })
+    }
   } catch (error) {
     res.status(500).send({ message: 'Erro ao processar a requisição DELETE' })
   }
