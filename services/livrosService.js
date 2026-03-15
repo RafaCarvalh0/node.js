@@ -27,9 +27,20 @@ function atualizarLivro(id, livroAtualizado) {
   }
 }
 
+function deletaLivroPorId(id) {
+  const livros = JSON.parse(fs.readFileSync('livros.json', 'utf-8'))
+  const livroIndex = livros.findIndex(livro => String(livro.id) === String(id))
+  if (livroIndex !== -1) {
+    livros.splice(livroIndex, 1)
+    fs.writeFileSync('livros.json', JSON.stringify(livros))
+  }
+}
+
+
 module.exports = {
   getTodosLivros,
   getLivroPorId,
   addLivro,
-  atualizarLivro
+  atualizarLivro,
+  deletaLivroPorId
 }

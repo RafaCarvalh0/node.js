@@ -1,5 +1,5 @@
 const { get } = require('http')
-const { getTodosLivros, getLivroPorId, addLivro, atualizarLivro } = require('../services/livrosService')
+const { getTodosLivros, getLivroPorId, addLivro, atualizarLivro, deletaLivroPorId } = require('../services/livrosService')
 
 function getLivros(req, res) {
   try {
@@ -52,7 +52,8 @@ function patchLivro(req, res) {
 function deleteLivro(req, res) {
   try {
     const id = req.params.id
-    res.send({ message: `Vc fez uma requisição DELETE no ID ${id}` })
+    deletaLivroPorId(id)
+    res.send({ message: 'Livro deletado com sucesso' })
   } catch (error) {
     res.status(500).send({ message: 'Erro ao processar a requisição DELETE' })
   }
