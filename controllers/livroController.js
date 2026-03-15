@@ -1,5 +1,5 @@
 const { get } = require('http')
-const { getTodosLivros, getLivroPorId, addLivro } = require('../services/livrosService')
+const { getTodosLivros, getLivroPorId, addLivro, atualizarLivro } = require('../services/livrosService')
 
 function getLivros(req, res) {
   try {
@@ -30,10 +30,20 @@ function createLivro(req, res) {
   }
 }
 
-function updateLivro(req, res) {
+function patchLivro(req, res) {
   try {
     const id = req.params.id
-    res.send({ message: `Vc fez uma requisição PATCH no ID ${id}`, body: req.body })
+    const livroAtualizado = req.body
+    
+    const livroAtual = getLivroPorId(id)
+    
+    if (livroAtual) {
+      atualizarLivro(id, livroAtualizado)
+      const livroModificado = getLivroPorId(id)
+      res.send({ message: 'Livro atualizado com sucesso', body: livroModificado })
+    } else {
+      res.status(404).send({ message: 'Livro não encontrado' })
+    }
   } catch (error) {
     res.status(500).send({ message: 'Erro ao processar a requisição PATCH' })
   }
@@ -52,6 +62,6 @@ module.exports = {
   getLivros,
   getLivro,
   createLivro,
-  updateLivro,
+  patchLivro,
   deleteLivro
 }
