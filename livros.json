@@ -1,3 +1,17 @@
-[{"id":1,"nome":"teste","autor":"aaaaaaaaaaaaa","ano":1987},
-{"id":2,"nome":"O Alienista","autor":"Machado de Assis","ano":1882},
-{"id":3,"nome":"O Hobbit","autor":"J.R.R. Tolkien","ano":1937}]
+[
+    {"id": 1, "nome": "teste", "autor": "aaaaaaaaaaaaa", "ano": 1987},
+    {"id": 2, "nome": "O Alienista", "autor": "Machado de Assis", "ano": 1882},
+    {"id": 3, "nome": "O Hobbit", "autor": "J.R.R. Tolkien", "ano": 1937},
+    {"id": 4, "nome": "O Senhor dos Anéis", "autor": "J.R.R. Tolkien", "ano": 1954},
+    {"id": 5, "nome": "Dom Casmurro", "autor": "Machado de Assis", "ano": 1899},
+    {"id": 6, "nome": "Memórias Póstumas de Brás Cubas", "autor": "Machado de Assis", "ano": 1881},
+    {"id": 7, "nome": "O Guarani", "autor": "José de Alencar", "ano": 1857},
+    {"id": 8, "nome": "Iracema", "autor": "José de Alencar", "ano": 1865},
+    {"id": 9, "nome": "Senhora", "autor": "José de Alencar", "ano": 1875},
+    {"id": 10, "nome": "A Moreninha", "autor": "Joaquim Manuel de Macedo", "ano": 1844},
+    {"id": 11, "nome": "O Primo Basílio", "autor": "José Maria de Eça de Queirós", "ano": 1878},
+    {"id": 12, "nome": "O Crime do Padre Amaro", "autor": "José Maria de Eça de Queirós", "ano": 1875},
+    {"id": 13, "nome": "A Cidade e as Serras", "autor": "José Maria de Eça de Queirós", "ano": 1901},
+    {"id": 14, "nome": "O Mulato", "autor": "Aluísio Azevedo", "ano": 1881},
+    {"id": 15, "nome": "Casa de Pensão", "autor": "Aluísio Azevedo", "ano": 1884}
+]
