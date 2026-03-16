@@ -14,7 +14,7 @@ function addLivro(id) {
     const livros = JSON.parse(fs.readFileSync('livros.json', 'utf-8'))
     const favoritos = JSON.parse(fs.readFileSync('favoritos.json', 'utf-8'))
 
-    const livroInserido = livros.find(livro => livro.id === id);
+    const livroInserido = livros.find(livro => String(livro.id) === String(id));
     const novaListaDeLivrosFavoritos = [...favoritos, livroInserido]
 
     fs.writeFileSync('favoritos.json', JSON.stringify(novaListaDeLivrosFavoritos))

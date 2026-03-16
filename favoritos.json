@@ -1,6 +1,1 @@
-[
-    {"id": 1, "nome": "Sport", "autor": "Recife", "ano": 1987},
-    {"id": 7, "nome": "O Guarani", "autor": "José de Alencar", "ano": 1857},
-    {"id": 8, "nome": "Iracema", "autor": "José de Alencar", "ano": 1865},
-    {"id": 9, "nome": "Senhora", "autor": "José de Alencar", "ano": 1875}
-]
+[{"id":1,"nome":"teste","autor":"aaaaaaaaaaaaa","ano":1987},{"id":2,"nome":"O Alienista","autor":"Machado de Assis","ano":1882}]
