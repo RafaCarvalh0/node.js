@@ -1,15 +1,16 @@
-const cors = require('cors');
 const express = require("express")
+const rotaLivro = require("./routes/livro")
+const rotaFavorito = require("./routes/favorito")
+
+const cors = require("cors")
+
 const app = express()
-const port = 8000
-
-app.use(cors());
-
-const livroRoutes = require('./routes/livro')
-
 app.use(express.json())
-app.use('/livros', livroRoutes)
 
+app.use('/livros', rotaLivro)
+app.use('/favoritos', rotaFavorito)
+
+const port = 8000
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`)
 })
